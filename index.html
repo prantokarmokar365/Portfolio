@@ -106,10 +106,27 @@
 
     <section class="contact section" id="contact">
       <p class="section-number reveal">05 / CONTACT</p>
-      <div class="contact-content reveal"><p class="contact-kicker">Have an idea, opportunity, or just want to say hello?</p><h2>Let's make something<br /><em>meaningful.</em></h2><a class="email-link" href="mailto:hello@suprantokarmaker.com">hello@suprantokarmaker.com <span>↗</span></a><div class="contact-socials" aria-label="Social links"><a href="#" aria-label="GitHub"><img src="https://cdn.simpleicons.org/github" alt="" /></a><a href="#" aria-label="LinkedIn"><svg class="linkedin-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29zM5.33 7.41a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.04H3.55V8.98h3.56v11.47z" /></svg></a><a href="#" aria-label="Facebook"><img src="https://cdn.simpleicons.org/facebook" alt="" /></a><a href="#" aria-label="Instagram"><img src="https://cdn.simpleicons.org/instagram" alt="" /></a><a href="#" aria-label="WhatsApp"><img src="https://cdn.simpleicons.org/whatsapp" alt="" /></a><a href="#" aria-label="X"><img src="https://cdn.simpleicons.org/x" alt="" /></a><a href="mailto:hello@suprantokarmaker.com" aria-label="Email"><img src="https://cdn.simpleicons.org/gmail" alt="" /></a></div></div>
+      <div class="contact-layout"><div class="contact-content reveal"><p class="contact-kicker">Have an idea, opportunity, or just want to say hello?</p><h2>Let's make something<br /><em>meaningful.</em></h2><a class="email-link" href="mailto:hello@suprantokarmaker.com">hello@suprantokarmaker.com <span>↗</span></a><div class="contact-socials" aria-label="Social links"><a href="#" aria-label="GitHub"><img src="https://cdn.simpleicons.org/github" alt="" /></a><a href="#" aria-label="LinkedIn"><svg class="linkedin-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29zM5.33 7.41a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.04H3.55V8.98h3.56v11.47z" /></svg></a><a href="#" aria-label="Facebook"><img src="https://cdn.simpleicons.org/facebook" alt="" /></a><a href="#" aria-label="Instagram"><img src="https://cdn.simpleicons.org/instagram" alt="" /></a><a href="#" aria-label="WhatsApp"><img src="https://cdn.simpleicons.org/whatsapp" alt="" /></a><a href="#" aria-label="X"><img src="https://cdn.simpleicons.org/x" alt="" /></a><a href="mailto:hello@suprantokarmaker.com" aria-label="Email"><img src="https://cdn.simpleicons.org/gmail" alt="" /></a></div></div>
+      <form class="message-form" id="message-form">
+        <div class="message-form-heading"><span>✦</span><p>Send a quick message</p></div>
+        <div class="message-fields"><label>Name<input type="text" name="name" autocomplete="name" placeholder="Your name" required /></label><label>Email<input type="email" name="email" autocomplete="email" placeholder="Your email" required /></label></div>
+        <label class="message-textarea">Message<textarea name="message" rows="3" placeholder="Tell me about your idea or opportunity..." required></textarea></label>
+        <button class="message-submit" type="submit">Send message <span>↗</span></button>
+      </form></div>
       <footer><p>© 2026 Supranto Karmaker</p><p>Designed & built with care.</p><a href="#home">Back to top ↑</a></footer>
     </section>
   </main>
+
+  <div class="update-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="update-modal-title">
+    <div class="update-modal-backdrop" data-close-update></div>
+    <article class="update-modal-panel">
+      <button class="update-modal-close" type="button" aria-label="Close update" data-close-update>×</button>
+      <p class="update-modal-meta"><span class="update-modal-tag"></span><span class="update-modal-date"></span></p>
+      <h2 id="update-modal-title"></h2>
+      <p class="update-modal-detail"></p>
+      <p class="update-modal-footer">Thanks for reading <span>✦</span></p>
+    </article>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>

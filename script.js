@@ -131,3 +131,83 @@ if (heroArt && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     heroArt.style.setProperty('--portrait-rotate-y', '0deg');
   });
 }
+
+const updateModal = document.querySelector('.update-modal');
+const updateCards = document.querySelectorAll('.update-card');
+let lastUpdateTrigger;
+
+const closeUpdateModal = () => {
+  updateModal.classList.remove('is-open');
+  updateModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  lastUpdateTrigger?.focus();
+};
+
+const openUpdateModal = (card) => {
+  const content = card.querySelector('div');
+  const summary = content.querySelector('p:last-child').textContent;
+  const title = content.querySelector('h3').textContent;
+  const tag = content.querySelector('.update-tag').textContent;
+  const date = card.querySelector('.update-date').textContent;
+
+  lastUpdateTrigger = card;
+  document.querySelector('#update-modal-title').textContent = title;
+  document.querySelector('.update-modal-tag').textContent = tag;
+  document.querySelector('.update-modal-date').textContent = date;
+  document.querySelector('.update-modal-detail').textContent = `${summary} This update highlights the work, learning, and thoughtful iteration behind the result.`;
+  updateModal.classList.add('is-open');
+  updateModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  updateModal.querySelector('.update-modal-close').focus();
+};
+
+updateCards.forEach((card) => {
+  card.tabIndex = 0;
+  card.setAttribute('role', 'button');
+  card.addEventListener('click', (event) => {
+    if (event.target.closest('a')) event.preventDefault();
+    openUpdateModal(card);
+  });
+  card.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openUpdateModal(card);
+    }
+  });
+});
+
+updateModal?.addEventListener('click', (event) => {
+  if (event.target.matches('[data-close-update]')) closeUpdateModal();
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && updateModal?.classList.contains('is-open')) closeUpdateModal();
+});
+
+const marqueeTrack = document.querySelector('.marquee-track');
+
+if (marqueeTrack && !marqueeTrack.dataset.loopReady) {
+  marqueeTrack.insertAdjacentHTML('beforeend', marqueeTrack.innerHTML);
+  marqueeTrack.dataset.loopReady = 'true';
+}
+
+const messageForm = document.querySelector('#message-form');
+
+const contactSocials = document.querySelector('.contact-socials');
+const contactFooter = document.querySelector('.contact footer');
+
+if (contactSocials && contactFooter) {
+  contactFooter.before(contactSocials);
+}
+
+messageForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const formData = new FormData(messageForm);
+  const senderName = formData.get('name');
+  const senderEmail = formData.get('email');
+  const message = formData.get('message');
+  const subject = encodeURIComponent(`Portfolio message from ${senderName}`);
+  const body = encodeURIComponent(`Name: ${senderName}\nEmail: ${senderEmail}\n\n${message}`);
+
+  window.location.href = `mailto:hello@suprantokarmaker.com?subject=${subject}&body=${body}`;
+});
