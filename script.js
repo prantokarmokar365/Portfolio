@@ -111,6 +111,11 @@ if (typedText && typingLine) {
 }
 
 const heroArt = document.querySelector('.hero-art');
+const homeSocials = document.querySelector('.hero-footer .socials');
+
+if (heroArt && homeSocials) {
+  heroArt.append(homeSocials);
+}
 
 if (heroArt && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   heroArt.addEventListener('pointermove', (event) => {
@@ -210,4 +215,45 @@ messageForm?.addEventListener('submit', (event) => {
   const body = encodeURIComponent(`Name: ${senderName}\nEmail: ${senderEmail}\n\n${message}`);
 
   window.location.href = `mailto:hello@suprantokarmaker.com?subject=${subject}&body=${body}`;
+});
+
+const certificatePreview = document.querySelector('.certificate-preview');
+const certificatePreviewImage = document.querySelector('.certificate-preview-image');
+const certificatePreviewTitle = document.querySelector('#certificate-preview-title');
+const certificatePreviewFile = document.querySelector('.certificate-preview-file');
+let lastCertificateTrigger;
+
+const closeCertificatePreview = () => {
+  certificatePreview.classList.remove('is-open', 'is-missing');
+  certificatePreview.setAttribute('aria-hidden', 'true');
+  certificatePreviewImage.removeAttribute('src');
+  document.body.style.overflow = '';
+  lastCertificateTrigger?.focus();
+};
+
+document.querySelectorAll('.certificate-card a').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    lastCertificateTrigger = link;
+    const title = link.closest('.certificate-card').querySelector('h3').textContent;
+
+    certificatePreviewTitle.textContent = title;
+    certificatePreviewFile.textContent = link.getAttribute('href');
+    certificatePreviewImage.alt = `${title} certificate`;
+    certificatePreview.classList.remove('is-missing');
+    certificatePreview.classList.add('is-open');
+    certificatePreview.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    certificatePreviewImage.src = link.getAttribute('href');
+    certificatePreview.querySelector('.certificate-preview-close').focus();
+  });
+});
+
+certificatePreviewImage?.addEventListener('error', () => certificatePreview.classList.add('is-missing'));
+certificatePreview?.addEventListener('click', (event) => {
+  if (event.target.matches('[data-close-certificate]')) closeCertificatePreview();
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && certificatePreview?.classList.contains('is-open')) closeCertificatePreview();
 });
