@@ -4,6 +4,27 @@ const navigationLinks = document.querySelectorAll('.site-nav a');
 const navIndicator = document.querySelector('.nav-indicator');
 const themeToggle = document.querySelector('.theme-toggle');
 
+const favicon = document.querySelector('#site-favicon');
+const faviconSource = new Image();
+
+faviconSource.addEventListener('load', () => {
+  const faviconCanvas = document.createElement('canvas');
+  faviconCanvas.width = 64;
+  faviconCanvas.height = 64;
+  const faviconContext = faviconCanvas.getContext('2d');
+  const imageSize = Math.min(faviconSource.naturalWidth, faviconSource.naturalHeight);
+  const imageLeft = (faviconSource.naturalWidth - imageSize) / 2;
+  const imageTop = (faviconSource.naturalHeight - imageSize) / 2;
+
+  faviconContext.beginPath();
+  faviconContext.arc(32, 32, 32, 0, Math.PI * 2);
+  faviconContext.clip();
+  faviconContext.drawImage(faviconSource, imageLeft, imageTop, imageSize, imageSize, 0, 0, 64, 64);
+  favicon.href = faviconCanvas.toDataURL('image/png');
+});
+
+faviconSource.src = 'my_image.jpg';
+
 const updateNavIndicator = () => {
   const activeLink = document.querySelector('.site-nav a.active');
   if (!activeLink || !navIndicator) return;
