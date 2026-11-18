@@ -23,7 +23,7 @@ faviconSource.addEventListener('load', () => {
   favicon.href = faviconCanvas.toDataURL('image/png');
 });
 
-faviconSource.src = 'my_image.jpg';
+faviconSource.src = 'images/pictures/my_image.jpg';
 
 const updateNavIndicator = () => {
   const activeLink = document.querySelector('.site-nav a.active');
