@@ -4,6 +4,12 @@ const navigationLinks = document.querySelectorAll('.site-nav a');
 const navIndicator = document.querySelector('.nav-indicator');
 const themeToggle = document.querySelector('.theme-toggle');
 
+document.querySelectorAll('a[aria-label="GitHub"]').forEach((githubLink) => {
+  githubLink.href = 'https://github.com/prantokarmokar365';
+  githubLink.target = '_blank';
+  githubLink.rel = 'noopener noreferrer';
+});
+
 const favicon = document.querySelector('#site-favicon');
 const faviconSource = new Image();
 
@@ -219,6 +225,10 @@ if (marqueeTrack && !marqueeTrack.dataset.loopReady) {
 
 const messageForm = document.querySelector('#message-form');
 
+document.querySelectorAll('[aria-label="Instagram"]').forEach((link) => {
+  link.href = 'https://www.instagram.com/___kuekuatsheu___?avpt=NmN1MTdmcjRjejB5';
+});
+
 const contactSocials = document.querySelector('.contact-socials');
 const contactFooter = document.querySelector('.contact footer');
 
@@ -235,7 +245,7 @@ messageForm?.addEventListener('submit', (event) => {
   const subject = encodeURIComponent(`Portfolio message from ${senderName}`);
   const body = encodeURIComponent(`Name: ${senderName}\nEmail: ${senderEmail}\n\n${message}`);
 
-  window.location.href = `mailto:hello@suprantokarmaker.com?subject=${subject}&body=${body}`;
+  window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=prantokarmokar635@gmail.com&su=${subject}&body=${body}`, '_blank', 'noopener');
 });
 
 const certificatePreview = document.querySelector('.certificate-preview');

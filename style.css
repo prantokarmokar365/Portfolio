@@ -594,8 +594,32 @@ h2 em {
 .visual-study {
   background: #e0ca73;
 }
+.project-cover {
+  display: block;
+  isolation: isolate;
+}
+.project-cover img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 650ms cubic-bezier(.2,.7,.2,1), filter 350ms ease;
+}
+.project-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(9, 16, 27, 0.03) 35%, rgba(9, 16, 27, 0.72) 100%);
+}
+.project-card:hover .project-cover img {
+  transform: scale(1.06);
+  filter: saturate(1.08);
+}
 .visual-label {
   position: absolute;
+  z-index: 2;
   bottom: 16px;
   left: 18px;
   color: #fff;
@@ -2770,7 +2794,7 @@ body.dark-theme {
 .hero-art .socials {
   position: absolute;
   z-index: 4;
-  bottom: -44px;
+  bottom: -62px;
   left: 50%;
   transform: translateX(-50%);
   justify-content: center;
@@ -2784,6 +2808,6 @@ body.dark-theme {
 }
 @media (max-width: 560px) {
   .hero-art .socials {
-    bottom: -54px;
+    bottom: -70px;
   }
 }
