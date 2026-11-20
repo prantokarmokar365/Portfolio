@@ -2676,7 +2676,8 @@ body.dark-theme {
     margin-top: 38px;
   }
   .certificate-card {
-    min-height: 220px;
+    min-height: 280px;
+    padding-bottom: 58px;
   }
 }
 
@@ -2837,5 +2838,9 @@ body.dark-theme {
 @media (max-width: 560px) {
   .hero-art .socials {
     bottom: -70px;
+  }
+  .hero-footer {
+    margin-top: 82px;
+    justify-content: center;
   }
 }
