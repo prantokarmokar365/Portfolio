@@ -13,10 +13,14 @@
 }
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: clip;
 }
 body {
   margin: 0;
   padding-top: 84px;
+  width: 100%;
+  max-width: 100%;
   color: var(--ink);
   background: var(--paper);
   font-family: "Manrope", sans-serif;
@@ -2156,8 +2160,33 @@ body.dark-theme {
     width 0.38s cubic-bezier(0.22, 1, 0.36, 1);
 }
 @media (max-width: 850px) {
+  .site-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 28px 60px;
+    column-gap: 8px;
+    justify-content: initial;
+    width: 100%;
+    max-width: 100%;
+  }
   .nav-indicator {
     display: none;
+  }
+  .site-header .site-nav {
+    position: absolute;
+    top: 83px;
+    left: 0;
+    right: 0;
+  }
+  .site-header .menu-toggle {
+    grid-column: 2;
+    flex: 0 0 28px;
+    margin: 0;
+  }
+  .site-header .theme-toggle {
+    grid-column: 3;
+    flex: 0 0 60px;
+    margin: 0;
+    box-sizing: border-box;
   }
 }
 
