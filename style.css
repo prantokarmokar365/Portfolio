@@ -13,14 +13,11 @@
 }
 html {
   scroll-behavior: smooth;
-  width: 100%;
   overflow-x: clip;
 }
 body {
   margin: 0;
   padding-top: 84px;
-  width: 100%;
-  max-width: 100%;
   color: var(--ink);
   background: var(--paper);
   font-family: "Manrope", sans-serif;
@@ -2165,8 +2162,10 @@ body.dark-theme {
     grid-template-columns: minmax(0, 1fr) 28px 60px;
     column-gap: 8px;
     justify-content: initial;
-    width: 100%;
-    max-width: 100%;
+    left: 0;
+    right: auto;
+    width: 100vw;
+    max-width: 100vw;
   }
   .nav-indicator {
     display: none;
